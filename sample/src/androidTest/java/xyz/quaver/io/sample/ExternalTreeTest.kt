@@ -12,7 +12,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import xyz.quaver.io.FileX
 import xyz.quaver.io.util.deleteRecursively
-import xyz.quaver.io.util.getChild
 
 const val TEST_PACKAGE = "xyz.quaver.io.sample"
 const val TEST_FOLDER = ".documentfilex-test"

@@ -1,9 +1,7 @@
 package xyz.quaver.io.sample
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.After
@@ -12,7 +10,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import xyz.quaver.io.FileX
 import xyz.quaver.io.util.deleteRecursively
-import xyz.quaver.io.util.getChild
 
 @RunWith(AndroidJUnit4::class)
 class RawTest {
