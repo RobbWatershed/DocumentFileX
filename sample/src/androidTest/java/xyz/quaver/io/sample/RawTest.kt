@@ -14,16 +14,13 @@ import xyz.quaver.io.FileX
 import xyz.quaver.io.util.deleteRecursively
 import xyz.quaver.io.util.getChild
 
-const val TEST_PACKAGE = "xyz.quaver.io.sample"
-const val TEST_FOLDER = ".documentfilex-test"
-const val LAUNCH_TIMEOUT = 5000L
-
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class RawTest {
     private lateinit var rootUri: Uri
 
     @Before
     fun initTest() {
+        /*
         val context = ApplicationProvider.getApplicationContext<Context>()
         val intent = context.packageManager.getLaunchIntentForPackage(TEST_PACKAGE)?.apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -31,19 +28,19 @@ class ExampleInstrumentedTest {
         context.startActivity(intent)
 
         rootUri = when (Build.VERSION.SDK_INT) {
-            21 -> obtainPermissionSDK21()
+            21 -> obtainSdCardPermissionSDK21()
             else -> error("SDK not supported")
         }
+         */
     }
 
     @Test
     fun create_directory() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val root = FileX(context, rootUri)
+        val root = FileX(context, context.cacheDir)
+        rootUri = root.uri
 
-        root.getChild("testFolder").mkdir()
-
-        assert(FileX(context, rootUri, "testFolder").exists())
+        Generic.create_directory(context, root)
     }
 
     @After

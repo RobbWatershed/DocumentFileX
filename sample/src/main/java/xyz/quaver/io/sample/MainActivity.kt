@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         if (it.resultCode == Activity.RESULT_OK) {
             it.data?.data?.also { uri ->
                 /*
-                 * Add theese lines to make permissions persist
+                 * Add these lines to make permissions persist
                  * val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or INTENT.FLAG_GRANT_WRITE_URI_PERMISSION
                  * contentResolver.takePersistableUriPermission(uri, takeFlags)
                  */
