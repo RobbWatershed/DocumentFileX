@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.*
 
-fun obtainPermissionSDK21() : Uri {
+fun obtainPermissionSDK21(): Uri {
     val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
     device.wait(
