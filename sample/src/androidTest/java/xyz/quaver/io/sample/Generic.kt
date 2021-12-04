@@ -7,20 +7,36 @@ import xyz.quaver.io.util.getChild
 class Generic {
 
     companion object {
-        fun create_directory(context: Context, root: FileX) {
+        fun create_directory(context: Context, root: FileX): FileX {
             assert(!root.getChild("testFolder").exists())
             assert(root.getChild("testFolder").mkdir())
 
             val testFolder = FileX(context, root, "testFolder")
             assert(testFolder.exists())
 
-            assert(testFolder.getChild("testFile1").createNewFile())
-            assert(testFolder.getChild("testFile2").createNewFile())
-            assert(testFolder.getChild("testFile3").createNewFile())
+            return testFolder
+        }
 
-            val fileList = testFolder.list()
+        fun createListfiles(root: FileX) {
+            val fileNames = listOf("testFile1", "testFile2")
+
+            for (name in fileNames)
+                assert(root.getChild(name).createNewFile())
+
+            val fileList = root.listFiles()
             if (fileList != null) {
-                assert(3 == fileList.size)
+                assert(fileNames.size == fileList.size)
+                var found : Boolean
+                for (name in fileNames) {
+                    found = false
+                    for (file in fileList) {
+                        if (file.name.equals(name)) {
+                            found = true
+                            break
+                        }
+                    }
+                    assert(found)
+                }
             } else assert(false)
         }
     }

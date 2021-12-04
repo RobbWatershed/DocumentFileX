@@ -37,7 +37,8 @@ class RawTest {
         val root = FileX(context, context.cacheDir)
         rootUri = root.uri
 
-        Generic.create_directory(context, root)
+        val testFolder = Generic.create_directory(context, root)
+        Generic.createListfiles(testFolder)
     }
 
     @After

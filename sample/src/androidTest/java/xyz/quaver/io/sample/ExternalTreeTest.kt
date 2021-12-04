@@ -40,7 +40,8 @@ class ExternalTreeTest {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val root = FileX(context, rootUri)
 
-        Generic.create_directory(context, root)
+        val testFolder = Generic.create_directory(context, root)
+        Generic.createListfiles(testFolder)
     }
 
     @After
