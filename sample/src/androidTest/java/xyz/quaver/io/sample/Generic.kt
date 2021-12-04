@@ -2,6 +2,7 @@ package xyz.quaver.io.sample
 
 import android.content.Context
 import xyz.quaver.io.FileX
+import xyz.quaver.io.util.deleteRecursively
 import xyz.quaver.io.util.getChild
 
 class Generic {
@@ -18,7 +19,7 @@ class Generic {
         }
 
         fun createListfiles(root: FileX) {
-            val fileNames = listOf("testFile1", "testFile2")
+            val fileNames = listOf("testFile1", "testFile2", "testFile3")
 
             for (name in fileNames)
                 assert(root.getChild(name).createNewFile())
@@ -26,7 +27,7 @@ class Generic {
             val fileList = root.listFiles()
             if (fileList != null) {
                 assert(fileNames.size == fileList.size)
-                var found : Boolean
+                var found: Boolean
                 for (name in fileNames) {
                     found = false
                     for (file in fileList) {
@@ -37,7 +38,10 @@ class Generic {
                     }
                     assert(found)
                 }
+                assert(fileList[0].delete())
             } else assert(false)
+
+            assert(root.deleteRecursively())
         }
     }
 }
